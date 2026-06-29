@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: databricks/setup-cli@master
+        uses: databricks/setup-cli@main
 
       - run: |
           databricks bundle deploy -t prod
