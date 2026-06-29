@@ -21,10 +21,16 @@ resources:
         - name: schema
           default: ${var.schema}
 
+
       tasks:
         - task_key: notebook_task
           notebook_task:
             notebook_path: ../src/sample_notebook.ipynb
+        - task_key: transactions
+          depends_on:
+            - task_key: notebook_task
+          notebook_task:
+            notebook_path: ../src/transactions.ipynb
 
       environments:
         - environment_key: default
