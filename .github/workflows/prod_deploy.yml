@@ -1,0 +1,28 @@
+name: Deploy Databricks Bundle
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: 'deploy bundle'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: databricks/setup-cli@master
+
+      - run: |
+          databricks bundle deploy -t prod
+        working-directory: demo_analytics
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_BUNDLE_ENV: prod
