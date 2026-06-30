@@ -46,7 +46,7 @@ jobs:
         uses: databricks/setup-cli@main
 
       - run: databricks bundle deploy -t prod
-        working-directory: /home/runner/work/databees-databricks-dev/demo-anaytics
+        working-directory: demo_anaytics
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_BUNDLE_ENV: prod
